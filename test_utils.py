@@ -24,11 +24,16 @@ def test_cosine_similarity():
     assert np.isclose(result, expected_result), f"Expected {expected_result}, but got {result}"
 
 def test_nearest_neighbor():
-    data = np.array([[1, 2], [3, 4], [5, 6], [7, 8]])
-    query = np.array([4, 5])
+    vectors = np.array([
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1],
+        [1, 1, 0]
+    ])
+    target_vector = np.array([0.9, 0.9, 0])
 
-    result = nearest_neighbor(data, query)
-
-    expected_index = 1 
-
+    result = nearest_neighbor(target_vector, vectors)
+    
+    expected_index = 3
+    
     assert result == expected_index, f"Expected index {expected_index}, but got {result}"
